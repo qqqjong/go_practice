@@ -1,15 +1,29 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"log"
+	//"bufio"
+	"fmt"
+	//"io"
+	"io/ioutil"
+	"os"
 )
 
-var (
-	router = gin.Default()
-)
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
 
 func main() {
-	router.POST("/login", Login)
-	log.Fatalln(router.Run(":8080"))
+	dat, err := ioutil.ReadFile("hello.txt")
+	check(err)
+	fmt.Println(string(dat))
+
+	f, err := os.Open("hello.txt")
+	check(err)
+	b1 := make([]byte, 15)
+	_, err = f.Read(b1)
+	check(err)
+	fmt.Println(string(b1))
+
 }
