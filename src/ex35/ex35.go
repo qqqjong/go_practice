@@ -14,4 +14,6 @@ func main() {
 		friends = friends[:2]
 		fmt.Printf("v[%s]\n", friends[i])
 	}
+
+	fmt.Println("end")
 }
