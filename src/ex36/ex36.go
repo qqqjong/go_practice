@@ -2,21 +2,13 @@ package main
 
 import "fmt"
 
-type Animal struct {
-	Name string
-	IsMammal bool
-}
-
-func (a *Animal) Speak() {
-	fmt.Printf(
-			"UGH! My name is %s, it is %t I am a mammal\n",
-			a.Name,
-			a.IsMammal,
-		)
+type Speaker interface {
+	Speak()
 }
 
 type Dog struct {
-	Animal
+	Name string
+	IsMammal bool
 	PackFactor int
 }
 
@@ -30,7 +22,8 @@ func (d *Dog) Speak() {
 }
 
 type Cat struct {
-	Animal
+	Name string
+	IsMammal bool
 	ClimbFactor int
 }
 
@@ -44,13 +37,16 @@ func (c *Cat) Speak() {
 }
 
 func main() {
-	animals := []Animal{
-		Dog{
-			Animal: Animal{
-				Name: "Fido",
-				IsMammal: true,
-			},
+	speakers := []Speaker{
+		&Dog{
+			Name: "Fido",
+			IsMammal: true,
 			PackFactor: 5,
+		},
+		&Cat{
+			Name: "Meme",
+			IsMammal: true,
+			ClimbFactor: 10,
 		},
 	}
 }
