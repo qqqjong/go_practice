@@ -39,14 +39,16 @@ func (c *Cat) Speak() {
 func main() {
 	speakers := []Speaker{
 		&Dog{
-			Name: "Fido",
-			IsMammal: true,
+			Name:       "Fido",
+			IsMammal:   true,
 			PackFactor: 5,
 		},
 		&Cat{
-			Name: "Meme",
-			IsMammal: true,
+			Name:        "Meme",
+			IsMammal:    true,
 			ClimbFactor: 10,
 		},
 	}
+
+	fmt.Println(speakers)
 }
